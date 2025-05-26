@@ -1,55 +1,134 @@
-<img width="250" align="right" src="https://c.tenor.com/_DOBjnGspYAAAAAM/code-coding.gif">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ismail's Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
 
-<h3 align="center">
-  Welcome to Ismail Cherraki's GitHub!
-  <img src="https://media.giphy.com/media/hvRJCLFzcasrR4ia7z/giphy.gif" width="28">
-</h3>
+    body {
+      background: linear-gradient(120deg, #0f0c29, #302b63, #24243e);
+      color: white;
+      padding: 30px;
+    }
 
-<p align="center">
-  <a href="https://github.com/DenverCoder1/readme-typing-svg"><img src="https://readme-typing-svg.herokuapp.com/?lines=Aspiring%20Frontend%20Developer;Learning%20HTML%20%26%20CSS;Soon%20JavaScript%20Master&font=Fira%20Code&center=true&width=440&height=45&color=00FFAA&vCenter=true&size=22"></a>
-</p> 
+    header {
+      text-align: center;
+      margin-bottom: 60px;
+    }
 
----
+    header h1 {
+      font-size: 3em;
+      color: #00ffd5;
+      text-shadow: 0 0 10px #00ffd5, 0 0 20px #00ffd5;
+    }
 
-### 🚀 About Me
+    header p {
+      font-size: 1.2em;
+      color: #ccc;
+    }
 
-- 🎓 I'm currently learning **HTML** and **CSS**.
-- 🚧 I haven't started JavaScript or backend yet, but it's on my roadmap.
-- 🌱 I'm passionate about design, creativity, and building beautiful user interfaces.
-- 🎯 My goal is to become a **Frontend Developer** with strong UI/UX skills.
+    section {
+      margin-bottom: 80px;
+    }
 
----
+    h2 {
+      font-size: 2em;
+      border-left: 5px solid #00ffd5;
+      padding-left: 15px;
+      margin-bottom: 30px;
+    }
 
-### 🧰 Tech I'm Learning
+    .card {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 20px;
+      padding: 20px;
+      margin-bottom: 20px;
+      backdrop-filter: blur(8px);
+      box-shadow: 0 0 15px rgba(0, 255, 213, 0.2);
+    }
 
-![HTML](https://img.shields.io/badge/-HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
-![CSS](https://img.shields.io/badge/-CSS3-1572B6?style=for-the-badge&logo=css3)
-![VSCode](https://img.shields.io/badge/-Visual%20Studio%20Code-007ACC?style=for-the-badge&logo=visual-studio-code)
+    .skills span {
+      background-color: #00ffd5;
+      color: #000;
+      padding: 8px 15px;
+      margin: 5px;
+      border-radius: 20px;
+      display: inline-block;
+      font-weight: 500;
+      box-shadow: 0 0 10px #00ffd5;
+    }
 
----
+    .contact a {
+      color: #00ffd5;
+      text-decoration: none;
+      font-size: 1.2em;
+      display: block;
+      margin-bottom: 10px;
+    }
 
-### 📫 Contact Me
+    footer {
+      text-align: center;
+      color: #888;
+      margin-top: 50px;
+      font-size: 0.9em;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Ismail Cherraki</h1>
+    <p>Future Frontend Developer 🚀 | Passionate about clean design & code</p>
+  </header>
 
-<a href="https://www.linkedin.com/in/ismail-cherraki-438213307/" target="_blank"><img src="https://img.shields.io/badge/-LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white"/></a>
+  <section>
+    <h2>👨‍💻 About Me</h2>
+    <div class="card">
+      <p>Hello! I'm Ismail, a self-taught web developer passionate about beautiful and responsive design. I started my journey learning HTML & CSS, and now I'm aiming to explore more tech fields in the future.</p>
+    </div>
+  </section>
 
----
+  <section>
+    <h2>💡 Skills</h2>
+    <div class="card skills">
+      <span>HTML5</span>
+      <span>CSS3</span>
+      <span>Responsive Design</span>
+      <span>UI/UX Basics</span>
+      <span>Git</span>
+    </div>
+  </section>
 
-### 📊 GitHub Stats
+  <section>
+    <h2>📁 Projects</h2>
+    <div class="card">
+      <h3>Personal Portfolio</h3>
+      <p>A creative and unique portfolio made with just HTML & CSS, with animations and stunning layout.</p>
+    </div>
+    <div class="card">
+      <h3>Landing Page Clone</h3>
+      <p>A responsive landing page inspired by modern SaaS websites.</p>
+    </div>
+  </section>
 
-<img align="left" src="https://github-readme-stats.vercel.app/api/top-langs/?username=ismailcherraki&layout=compact&theme=radical" />
+  <section>
+    <h2>📬 Contact</h2>
+    <div class="card contact">
+      <a href="https://www.linkedin.com/in/ismail-cherraki-438213307/" target="_blank">LinkedIn</a>
+      <a href="mailto:yourmail@example.com">yourmail@example.com</a>
+    </div>
+  </section>
 
-<a href="https://komarev.com/ghpvc/?username=ismailcherraki&style=for-the-badge">
-  <img src="https://komarev.com/ghpvc/?username=ismailcherraki&style=for-the-badge" alt="Profile views" />
-</a>
-
----
-
-> ⚡️ "Every line of code brings me closer to my dream. Stay creative, stay curious."
-
-<style>
-  body {
-    font-family: 'Fira Code', monospace;
-    background: linear-gradient(145deg, #1f1f1f, #2c2c2c);
-    color: #f0f0f0;
-  }
-</style>
+  <footer>
+    © 2025 Ismail Cherraki. All rights reserved.
+  </footer>
+</body>
+</html>
