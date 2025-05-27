@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -14,11 +15,10 @@
     }
 
     body {
-      background: linear-gradient(135deg, #e0f7fa, #e3f2fd);
+      background-color: #f0f4ff;
       color: #0f172a;
       line-height: 1.6;
       scroll-behavior: smooth;
-      overflow-x: hidden;
     }
 
     header {
@@ -27,37 +27,23 @@
       align-items: center;
       padding: 1rem 2rem;
       background: white;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-      position: sticky;
-      top: 0;
-      z-index: 1000;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
     }
 
     nav a {
-      margin-left: 1.5rem;
+      margin-left: 1rem;
       text-decoration: none;
       color: #0f172a;
-      font-weight: 600;
-      position: relative;
+      font-weight: 500;
+      transition: color 0.3s;
     }
 
-    nav a::after {
-      content: '';
-      position: absolute;
-      bottom: -5px;
-      left: 0;
-      width: 0;
-      height: 2px;
-      background: #3b82f6;
-      transition: width 0.3s;
-    }
-
-    nav a:hover::after {
-      width: 100%;
+    nav a:hover {
+      color: #3b82f6;
     }
 
     nav a.active {
-      color: #3b82f6;
+      border-bottom: 2px solid #3b82f6;
     }
 
     .hero {
@@ -65,19 +51,25 @@
       flex-direction: column;
       align-items: center;
       text-align: center;
-      padding: 5rem 2rem 4rem;
+      padding: 4rem 2rem;
       gap: 2rem;
       animation: fadeIn 2s ease;
     }
 
     @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(30px); }
-      to { opacity: 1; transform: translateY(0); }
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     .hero-text h1 {
-      font-size: 3rem;
-      color: #0f172a;
+      font-size: 2.5rem;
     }
 
     .hero-text h1 span {
@@ -85,40 +77,50 @@
     }
 
     .hero-text button {
-      margin-top: 2rem;
-      padding: 0.75rem 1.5rem;
+      margin-top: 1.5rem;
+      padding: 0.5rem 1rem;
       font-size: 1rem;
       color: white;
-      background: linear-gradient(to right, #3b82f6, #2563eb);
+      background-color: #3b82f6;
       border: none;
-      border-radius: 8px;
+      border-radius: 6px;
       cursor: pointer;
-      transition: transform 0.3s, box-shadow 0.3s;
+      transition: background-color 0.3s;
     }
 
     .hero-text button:hover {
-      transform: scale(1.05);
-      box-shadow: 0 5px 15px rgba(59, 130, 246, 0.4);
+      background-color: #2563eb;
     }
 
     .hero-img {
       display: flex;
       justify-content: center;
-      animation: zoomIn 2s ease;
+      animation: popIn 1.5s ease;
     }
 
-    @keyframes zoomIn {
-      from { opacity: 0; transform: scale(0.8); }
-      to { opacity: 1; transform: scale(1); }
+    @keyframes popIn {
+      from {
+        opacity: 0;
+        transform: scale(0.8);
+      }
+
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
     }
 
     .profile-container {
-      width: 220px;
-      height: 220px;
+      width: 200px;
+      height: 200px;
       border-radius: 50%;
       overflow: hidden;
-      border: 5px solid white;
-      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+      border: 4px solid #ffffff;
+      background-color: #ffffff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
       transition: transform 0.3s;
     }
 
@@ -132,74 +134,90 @@
       object-fit: cover;
     }
 
-    section.about, section#skills, section#contact {
-      padding: 4rem 2rem;
-      text-align: center;
-      animation: slideUp 1.5s ease;
-    }
-
-    @keyframes slideUp {
-      from { opacity: 0; transform: translateY(40px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    section h2 {
-      font-size: 2.2rem;
+    h2 {
+      font-size: 2rem;
       color: #3b82f6;
-      margin-bottom: 1.5rem;
+      text-align: center;
+      margin-top: 3rem;
     }
 
-    section p {
-      max-width: 700px;
-      margin: 0 auto 2rem;
-      font-size: 1.1rem;
+    .cards-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      margin: 2rem auto;
+      max-width: 1000px;
+      padding: 0 1rem;
     }
 
-    ul {
-      list-style: none;
-      max-width: 700px;
-      margin: auto;
+    .card {
+      background-color: #f8fafc;
+      border-radius: 1rem;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+      padding: 1.5rem;
+      transition: transform 0.3s, box-shadow 0.3s;
       text-align: left;
     }
 
-    ul li {
-      margin-bottom: 1rem;
-      font-size: 1.1rem;
-      position: relative;
-      padding-left: 25px;
+    .card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 12px 30px rgba(59, 130, 246, 0.15);
     }
 
-    ul li::before {
-      content: "✔️";
-      position: absolute;
-      left: 0;
+    .card h3 {
+      color: #3b82f6;
+      margin-bottom: 0.5rem;
+      font-size: 1.2rem;
     }
 
-    form {
-      max-width: 600px;
-      margin: auto;
-      text-align: left;
+    .card p {
+      font-size: 1rem;
+      color: #0f172a;
     }
 
-    form input, form textarea {
-      width: 100%;
+    .contact {
+      background-color: #ffffff;
+      padding: 3rem 2rem;
+      text-align: center;
+    }
+
+    .contact h2 {
+      margin-bottom: 2rem;
+    }
+
+    .contact form {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+
+    .contact input,
+    .contact textarea {
+      padding: 1rem;
+      font-size: 1rem;
+      border: 1px solid #cbd5e1;
+      border-radius: 8px;
+      outline: none;
+    }
+
+    .contact textarea {
+      resize: vertical;
+    }
+
+    .contact button {
       padding: 0.75rem;
-      margin-bottom: 1rem;
-      border: 1px solid #ccc;
-      border-radius: 6px;
-    }
-
-    form button {
-      padding: 0.75rem 1.5rem;
+      font-size: 1rem;
       background-color: #3b82f6;
       color: white;
       border: none;
-      border-radius: 6px;
+      border-radius: 8px;
       cursor: pointer;
       transition: background-color 0.3s;
     }
 
-    form button:hover {
+    .contact button:hover {
       background-color: #2563eb;
     }
 
@@ -209,7 +227,7 @@
       display: flex;
       justify-content: center;
       gap: 1.5rem;
-      background: #c7d2fe;
+      background-color: #e0e7ff;
     }
 
     footer a {
@@ -222,19 +240,9 @@
     footer a:hover {
       color: #3b82f6;
     }
-
-    @media (max-width: 600px) {
-      .hero-text h1 {
-        font-size: 2rem;
-      }
-
-      .profile-container {
-        width: 160px;
-        height: 160px;
-      }
-    }
   </style>
 </head>
+
 <body>
   <header>
     <div><strong>Ismail</strong></div>
@@ -246,63 +254,77 @@
       <a href="#contact">Contact</a>
     </nav>
   </header>
-
   <section class="hero">
     <div class="hero-img">
       <div class="profile-container">
-        <img src="profile.jpg.jpg" alt="Ismail Cherraki" />
+        <img
+          src="https://media.licdn.com/dms/image/v2/D4D03AQGTFNYae0f0eA/profile-displayphoto-shrink_200_200/B4DZcPI1nTGgAY-/0/1748305677764?e=1753920000&v=beta&t=GT_TxIcYNR0CjeUX34u9TGT08SaIVhVbHYErB5YAP_k"
+          alt="Ismail Cherraki" />
       </div>
     </div>
     <div class="hero-text">
-      <h1>Hi, <br> I'm <span>Ismail Cherraki</span><br> Web Designer</h1>
-      <button onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'});">Contact</button>
+      <h1>Hi, <br> I'm <span>Ismail Cherraki</span><br> Front-End Web Developer</h1>
+      <button>Contact Me</button>
     </div>
   </section>
-
   <section class="about" id="about">
     <h2>About Me</h2>
-    <p>Welcome to Ismail Cherraki's profile!</p>
-    <ul>
-      <li>I'm a beginner front-end developer focused on building clean and responsive websites.</li>
-      <li>I’ve already learned HTML & CSS, and I’m currently learning JavaScript.</li>
-      <li>Step by step, I’m building the foundation to become a professional web developer.</li>
-      <li>I’m committed to practicing daily and creating simple web projects.</li>
-    </ul>
+    <div class="cards-container">
+      <div class="card">
+        <h3>👨‍💻 Front-End Developer</h3>
+        <p>I am a creative and enthusiastic front-end developer with a strong passion for building modern, responsive
+          websites. My goal is to create smooth user experiences and visually engaging designs. I enjoy turning designs
+          into functional code using HTML and CSS, and I’m expanding my skills in JavaScript to bring more interactivity
+          to my projects.</p>
+      </div>
+      <div class="card">
+        <h3>🌱 Learning Journey</h3>
+        <p>I’ve already mastered the core of HTML and CSS and I’m diving deeper into JavaScript. I’m currently enrolled
+          in a hands-on web development program where I’m developing small and medium-scale projects, learning best
+          practices, and collaborating with peers. Every day I code, I improve.</p>
+      </div>
+      <div class="card">
+        <h3>🎓 Education</h3>
+        <p>I'm pursuing a Web Development training at Najm Association. This program is helping me build a strong
+          foundation in modern web technologies and improve my communication and teamwork skills—essential tools for a
+          future career in tech.</p>
+      </div>
+    </div>
   </section>
-
-  <section id="skills">
+  <section class="skills" id="skills">
     <h2>Skills</h2>
-    <ul>
-      <li>HTML5 - Strong understanding of semantic structure</li>
-      <li>CSS3 - Responsive layouts, Flexbox, and Grid</li>
-      <li>JavaScript - Currently learning core concepts</li>
-      <li>Git & GitHub - Basic version control</li>
-      <li>Photoshop/Canva - Visual design basics</li>
-      <li>Communication & teamwork skills</li>
-    </ul>
+    <div class="cards-container">
+      <div class="card">
+        <h3>💻 HTML</h3>
+        <p>I have a solid understanding of HTML5. I can structure pages with semantic elements and optimize them for
+          clarity, accessibility, and responsive layouts.</p>
+      </div>
+      <div class="card">
+        <h3>🎨 CSS</h3>
+        <p>I’m experienced with CSS3 features like Flexbox, Grid, animations, and media queries to design beautiful,
+          responsive websites. I love playing with styles and layouts to create clean UIs.</p>
+      </div>
+      <div class="card">
+        <h3>📚 JavaScript (In Progress)</h3>
+        <p>I’m actively learning JavaScript to enhance my websites with dynamic behaviors and interactivity. I'm
+          focusing on mastering DOM manipulation, events, and basic logic for front-end functionality.</p>
+      </div>
+    </div>
   </section>
-
-  <section id="contact">
+  <section class="contact" id="contact">
     <h2>Contact Me</h2>
-    <p>Feel free to reach out for collaboration or just to say hello!</p>
     <form>
-      <label for="name">Name</label><br>
-      <input type="text" id="name" name="name" required><br>
-
-      <label for="email">Email</label><br>
-      <input type="email" id="email" name="email" required><br>
-
-      <label for="message">Message</label><br>
-      <textarea id="message" name="message" rows="5" required></textarea><br>
-
+      <input type="text" placeholder="Your Name" required>
+      <input type="email" placeholder="Your Email" required>
+      <textarea rows="5" placeholder="Your Message" required></textarea>
       <button type="submit">Send Message</button>
     </form>
   </section>
-
   <footer>
     <a href="https://www.linkedin.com" target="_blank">LinkedIn</a>
     <a href="#">Behance</a>
     <a href="#">GitHub</a>
   </footer>
 </body>
+
 </html>
