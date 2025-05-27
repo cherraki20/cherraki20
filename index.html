@@ -12,64 +12,226 @@
       box-sizing: border-box;
       font-family: 'Inter', sans-serif;
     }
+
     body {
-      background-color: #f0f4ff;
+      background: linear-gradient(135deg, #e0f7fa, #e3f2fd);
       color: #0f172a;
       line-height: 1.6;
+      scroll-behavior: smooth;
+      overflow-x: hidden;
     }
+
     header {
       display: flex;
       justify-content: space-between;
       align-items: center;
       padding: 1rem 2rem;
       background: white;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
     }
+
     nav a {
-      margin-left: 1rem;
+      margin-left: 1.5rem;
       text-decoration: none;
       color: #0f172a;
-      font-weight: 500;
+      font-weight: 600;
+      position: relative;
     }
+
+    nav a::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: #3b82f6;
+      transition: width 0.3s;
+    }
+
+    nav a:hover::after {
+      width: 100%;
+    }
+
     nav a.active {
-      border-bottom: 2px solid #3b82f6;
+      color: #3b82f6;
     }
+
     .hero {
       display: flex;
+      flex-direction: column;
       align-items: center;
-      justify-content: space-between;
-      padding: 4rem 2rem;
+      text-align: center;
+      padding: 5rem 2rem 4rem;
+      gap: 2rem;
+      animation: fadeIn 2s ease;
     }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
     .hero-text h1 {
-      font-size: 2.5rem;
+      font-size: 3rem;
+      color: #0f172a;
     }
+
     .hero-text h1 span {
       color: #3b82f6;
     }
+
     .hero-text button {
-      margin-top: 1.5rem;
-      padding: 0.5rem 1rem;
+      margin-top: 2rem;
+      padding: 0.75rem 1.5rem;
       font-size: 1rem;
       color: white;
+      background: linear-gradient(to right, #3b82f6, #2563eb);
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .hero-text button:hover {
+      transform: scale(1.05);
+      box-shadow: 0 5px 15px rgba(59, 130, 246, 0.4);
+    }
+
+    .hero-img {
+      display: flex;
+      justify-content: center;
+      animation: zoomIn 2s ease;
+    }
+
+    @keyframes zoomIn {
+      from { opacity: 0; transform: scale(0.8); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    .profile-container {
+      width: 220px;
+      height: 220px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 5px solid white;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s;
+    }
+
+    .profile-container:hover {
+      transform: scale(1.05);
+    }
+
+    .profile-container img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    section.about, section#skills, section#contact {
+      padding: 4rem 2rem;
+      text-align: center;
+      animation: slideUp 1.5s ease;
+    }
+
+    @keyframes slideUp {
+      from { opacity: 0; transform: translateY(40px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    section h2 {
+      font-size: 2.2rem;
+      color: #3b82f6;
+      margin-bottom: 1.5rem;
+    }
+
+    section p {
+      max-width: 700px;
+      margin: 0 auto 2rem;
+      font-size: 1.1rem;
+    }
+
+    ul {
+      list-style: none;
+      max-width: 700px;
+      margin: auto;
+      text-align: left;
+    }
+
+    ul li {
+      margin-bottom: 1rem;
+      font-size: 1.1rem;
+      position: relative;
+      padding-left: 25px;
+    }
+
+    ul li::before {
+      content: "✔️";
+      position: absolute;
+      left: 0;
+    }
+
+    form {
+      max-width: 600px;
+      margin: auto;
+      text-align: left;
+    }
+
+    form input, form textarea {
+      width: 100%;
+      padding: 0.75rem;
+      margin-bottom: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+
+    form button {
+      padding: 0.75rem 1.5rem;
       background-color: #3b82f6;
+      color: white;
       border: none;
       border-radius: 6px;
       cursor: pointer;
+      transition: background-color 0.3s;
     }
-    .hero-img img {
-      width: 240px;
-      border-radius: 50%;
+
+    form button:hover {
+      background-color: #2563eb;
     }
+
     footer {
       margin-top: 3rem;
       padding: 1rem 2rem;
       display: flex;
       justify-content: center;
       gap: 1.5rem;
+      background: #c7d2fe;
     }
+
     footer a {
       text-decoration: none;
       color: #0f172a;
       font-size: 1.2rem;
+      transition: color 0.3s;
+    }
+
+    footer a:hover {
+      color: #3b82f6;
+    }
+
+    @media (max-width: 600px) {
+      .hero-text h1 {
+        font-size: 2rem;
+      }
+
+      .profile-container {
+        width: 160px;
+        height: 160px;
+      }
     }
   </style>
 </head>
@@ -86,17 +248,59 @@
   </header>
 
   <section class="hero">
+    <div class="hero-img">
+      <div class="profile-container">
+        <img src="profile.jpg.jpg" alt="Ismail Cherraki" />
+      </div>
+    </div>
     <div class="hero-text">
       <h1>Hi, <br> I'm <span>Ismail Cherraki</span><br> Web Designer</h1>
-      <button>Contact</button>
-    </div>
-    <div class="hero-img">
-      <img src="file:///C:/Users/ISSMAIL/Pictures/WhatsApp%20Image%202025-05-25%20at%2021.33.57_59a10032.jpg" alt="Ismail Cherraki" />
+      <button onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'});">Contact</button>
     </div>
   </section>
 
+  <section class="about" id="about">
+    <h2>About Me</h2>
+    <p>Welcome to Ismail Cherraki's profile!</p>
+    <ul>
+      <li>I'm a beginner front-end developer focused on building clean and responsive websites.</li>
+      <li>I’ve already learned HTML & CSS, and I’m currently learning JavaScript.</li>
+      <li>Step by step, I’m building the foundation to become a professional web developer.</li>
+      <li>I’m committed to practicing daily and creating simple web projects.</li>
+    </ul>
+  </section>
+
+  <section id="skills">
+    <h2>Skills</h2>
+    <ul>
+      <li>HTML5 - Strong understanding of semantic structure</li>
+      <li>CSS3 - Responsive layouts, Flexbox, and Grid</li>
+      <li>JavaScript - Currently learning core concepts</li>
+      <li>Git & GitHub - Basic version control</li>
+      <li>Photoshop/Canva - Visual design basics</li>
+      <li>Communication & teamwork skills</li>
+    </ul>
+  </section>
+
+  <section id="contact">
+    <h2>Contact Me</h2>
+    <p>Feel free to reach out for collaboration or just to say hello!</p>
+    <form>
+      <label for="name">Name</label><br>
+      <input type="text" id="name" name="name" required><br>
+
+      <label for="email">Email</label><br>
+      <input type="email" id="email" name="email" required><br>
+
+      <label for="message">Message</label><br>
+      <textarea id="message" name="message" rows="5" required></textarea><br>
+
+      <button type="submit">Send Message</button>
+    </form>
+  </section>
+
   <footer>
-    <a href="https://www.linkedin.com/in/ismail-cherraki-438213307/" target="_blank">LinkedIn</a>
+    <a href="https://www.linkedin.com" target="_blank">LinkedIn</a>
     <a href="#">Behance</a>
     <a href="#">GitHub</a>
   </footer>
