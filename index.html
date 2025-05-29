@@ -5,242 +5,737 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Ismail Cherraki - Web Designer</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
-  <style>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+ <style>
     * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Inter', sans-serif;
-    }
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
 
-    body {
-      background-color: #f0f4ff;
-      color: #0f172a;
-      line-height: 1.6;
-      scroll-behavior: smooth;
-    }
+body {
+    background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 25%, #16213e 50%, #0f3460 75%, #1e3a8a 100%);
+    background-size: 300% 300%;
+    animation: gradientShift 12s ease infinite;
+    color: white;
+    line-height: 1.6;
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+}
 
+@keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background: rgba(15, 15, 35, 0.8);
+    backdrop-filter: blur(20px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    border-bottom: 1px solid rgba(59, 130, 246, 0.2);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+header div {
+    font-size: 1.5rem;
+    font-weight: 700;
+    background: linear-gradient(45deg, #3b82f6, #06b6d4, #8b5cf6);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: 0 0 30px rgba(59, 130, 246, 0.5);
+}
+
+nav a {
+    margin-left: 1.5rem;
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.9);
+    font-weight: 500;
+    transition: all 0.3s ease;
+    position: relative;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+}
+
+nav a:hover {
+    color: #06b6d4;
+    background: rgba(6, 182, 212, 0.1);
+    transform: translateY(-2px);
+}
+
+nav a.active {
+    color: #3b82f6;
+    background: rgba(59, 130, 246, 0.1);
+}
+
+nav a::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, #3b82f6, #06b6d4);
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+}
+
+nav a:hover::after {
+    width: 80%;
+}
+
+.hero {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 4rem 2rem;
+    gap: 3rem;
+    animation: fadeIn 2s ease;
+    min-height: 80vh;
+    justify-content: center;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.hero-text h1 {
+    font-size: clamp(2rem, 5vw, 3rem);
+    background: linear-gradient(45deg, #3b82f6, #06b6d4, #8b5cf6, #ec4899);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: textGlow 4s ease-in-out infinite alternate;
+    margin-bottom: 1.5rem;
+}
+
+@keyframes textGlow {
+    from { filter: drop-shadow(0 0 20px rgba(59, 130, 246, 0.4)); }
+    to { filter: drop-shadow(0 0 40px rgba(6, 182, 212, 0.6)); }
+}
+
+.hero-text h1 span {
+    background: linear-gradient(45deg, #06b6d4, #8b5cf6);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.hero-text button {
+    padding: 1rem 2.5rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: white;
+    background: linear-gradient(45deg, #3b82f6, #06b6d4);
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 25px rgba(59, 130, 246, 0.4);
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-text button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s;
+}
+
+.hero-text button:hover::before {
+    left: 100%;
+}
+
+.hero-text button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 35px rgba(59, 130, 246, 0.6);
+}
+
+.hero-img {
+    display: flex;
+    justify-content: center;
+    animation: popIn 1.5s ease;
+}
+
+@keyframes popIn {
+    from {
+        opacity: 0;
+        transform: scale(0.8) rotate(-10deg);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1) rotate(0deg);
+    }
+}
+
+.profile-container {
+    width: 220px;
+    height: 220px;
+    border-radius: 50%;
+    overflow: hidden;
+    box-shadow: 0 8px 40px rgba(59, 130, 246, 0.3);
+    border: 3px solid transparent;
+    background: linear-gradient(45deg, #3b82f6, #06b6d4, #8b5cf6) border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.4s ease;
+    position: relative;
+}
+
+.profile-container::before {
+    content: '';
+    position: absolute;
+    inset: -3px;
+    border-radius: 50%;
+    background: linear-gradient(45deg, #3b82f6, #06b6d4, #8b5cf6, #ec4899);
+    z-index: -1;
+    animation: borderRotate 4s linear infinite;
+}
+
+@keyframes borderRotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+.profile-container:hover {
+    transform: scale(1.05);
+    box-shadow: 0 15px 50px rgba(59, 130, 246, 0.5);
+}
+
+.profile-container img {
+    width: calc(100% - 6px);
+    height: calc(100% - 6px);
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+h2 {
+    font-size: 2.5rem;
+    background: linear-gradient(45deg, #3b82f6, #06b6d4);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-align: center;
+    margin: 4rem 0 2rem 0;
+    font-weight: 700;
+}
+
+.cards-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin: 0 auto;
+    max-width: 1200px;
+    padding: 0 2rem;
+}
+
+.card {
+    background: rgba(15, 15, 35, 0.6);
+    backdrop-filter: blur(20px);
+    border-radius: 20px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(59, 130, 246, 0.2);
+    padding: 2rem;
+    transition: all 0.4s ease;
+    text-align: left;
+    position: relative;
+    overflow: hidden;
+}
+
+.card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.1), transparent);
+}
+
+.card:hover::before {
+    left: 100%;
+    transition: left 0.6s ease;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 50px rgba(59, 130, 246, 0.3);
+    border-color: rgba(6, 182, 212, 0.4);
+}
+
+.card h3 {
+    color: #06b6d4;
+    margin-bottom: 1rem;
+    font-size: 1.3rem;
+    font-weight: 600;
+}
+
+.card p {
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.9);
+    line-height: 1.7;
+}
+
+/* Enhanced Skills Section - NOUVELLES ANIMATIONS ULTRA DYNAMIQUES */
+.skills .cards-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    perspective: 1000px;
+}
+
+.skills .card {
+    background: rgba(15, 15, 35, 0.8);
+    backdrop-filter: blur(20px);
+    border-radius: 20px;
+    padding: 2rem 1rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.6s cubic-bezier(0.23, 1, 0.320, 1);
+    border: 1px solid rgba(59, 130, 246, 0.2);
+    transform-style: preserve-3d;
+    animation: floatRandom 8s ease-in-out infinite, slideInUp 0.8s ease forwards;
+    opacity: 0;
+}
+
+/* Animation de mouvement aléatoire pour chaque carte */
+.skills .card:nth-child(1) { 
+    animation-delay: 0s, 0.1s; 
+    animation-duration: 7s, 0.8s;
+}
+.skills .card:nth-child(2) { 
+    animation-delay: 0.5s, 0.2s; 
+    animation-duration: 8.5s, 0.8s;
+}
+.skills .card:nth-child(3) { 
+    animation-delay: 1s, 0.3s; 
+    animation-duration: 6.5s, 0.8s;
+}
+.skills .card:nth-child(4) { 
+    animation-delay: 1.5s, 0.4s; 
+    animation-duration: 9s, 0.8s;
+}
+.skills .card:nth-child(5) { 
+    animation-delay: 2s, 0.5s; 
+    animation-duration: 7.5s, 0.8s;
+}
+.skills .card:nth-child(6) { 
+    animation-delay: 2.5s, 0.6s; 
+    animation-duration: 8s, 0.8s;
+}
+.skills .card:nth-child(7) { 
+    animation-delay: 3s, 0.7s; 
+    animation-duration: 6s, 0.8s;
+}
+.skills .card:nth-child(8) { 
+    animation-delay: 3.5s, 0.8s; 
+    animation-duration: 9.5s, 0.8s;
+}
+
+@keyframes floatRandom {
+    0%, 100% { 
+        transform: translateY(0px) translateX(0px) rotateY(0deg) rotateX(0deg);
+    }
+    25% { 
+        transform: translateY(-20px) translateX(10px) rotateY(5deg) rotateX(2deg);
+    }
+    50% { 
+        transform: translateY(-10px) translateX(-15px) rotateY(-3deg) rotateX(-1deg);
+    }
+    75% { 
+        transform: translateY(-25px) translateX(5px) rotateY(8deg) rotateX(3deg);
+    }
+}
+
+@keyframes slideInUp {
+    from {
+        opacity: 0;
+        transform: translateY(50px) rotateX(-90deg);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) rotateX(0deg);
+    }
+}
+
+/* Effet de bordure animée */
+.skills .card::before {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    border-radius: 20px;
+    background: conic-gradient(from 0deg, #3b82f6, #06b6d4, #8b5cf6, #ec4899, #3b82f6);
+    z-index: -1;
+    animation: borderRotate 4s linear infinite;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+/* Effet de particules */
+.skills .card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at 20% 80%, rgba(59, 130, 246, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(6, 182, 212, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(139, 92, 246, 0.3) 0%, transparent 50%);
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    animation: particleMove 6s ease-in-out infinite;
+    pointer-events: none;
+}
+
+@keyframes particleMove {
+    0%, 100% { transform: scale(1) rotate(0deg); }
+    50% { transform: scale(1.1) rotate(180deg); }
+}
+
+.skills .card:hover {
+    animation-play-state: paused;
+    transform: translateY(-30px) scale(1.1) rotateY(10deg) rotateX(5deg);
+    box-shadow: 0 30px 80px rgba(59, 130, 246, 0.4);
+    border-color: rgba(6, 182, 212, 0.6);
+}
+
+.skills .card:hover::before {
+    opacity: 1;
+}
+
+.skills .card:hover::after {
+    opacity: 1;
+}
+
+.skills .card img {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 20px;
+    transition: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    filter: drop-shadow(0 8px 16px rgba(59, 130, 246, 0.3));
+    position: relative;
+}
+
+.skills .card:hover img {
+    transform: scale(1.3) rotateY(360deg);
+    filter: drop-shadow(0 15px 30px rgba(6, 182, 212, 0.6));
+}
+
+.skills .card p {
+    font-weight: 600;
+    color: #06b6d4;
+    font-size: 1.2rem;
+    margin-top: 15px;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.skills .card:hover p {
+    color: #3b82f6;
+    transform: scale(1.1);
+    text-shadow: 0 0 20px rgba(59, 130, 246, 0.8);
+}
+
+/* Effet de vague */
+.wave-effect {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: radial-gradient(circle, rgba(59, 130, 246, 0.4) 0%, transparent 70%);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: all 0.6s ease;
+    pointer-events: none;
+}
+
+.skills .card:hover .wave-effect {
+    width: 200px;
+    height: 200px;
+}
+
+/* Cartes spéciales avec gradients */
+.skills .card.special {
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.2), rgba(6, 182, 212, 0.2));
+}
+
+.skills .card.special:hover {
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.4), rgba(6, 182, 212, 0.4));
+}
+
+.contact {
+    background: rgba(15, 15, 35, 0.8);
+    backdrop-filter: blur(20px);
+    padding: 4rem 2rem;
+    text-align: center;
+    margin: 4rem 2rem 2rem 2rem;
+    border-radius: 30px;
+    border: 1px solid rgba(59, 130, 246, 0.3);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+}
+
+.contact h2 {
+    margin-bottom: 2rem;
+}
+
+.contact form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.contact input,
+.contact textarea {
+    padding: 1.2rem;
+    font-size: 1rem;
+    border: 1px solid rgba(59, 130, 246, 0.3);
+    border-radius: 15px;
+    outline: none;
+    background: rgba(15, 15, 35, 0.6);
+    color: white;
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+}
+
+.contact input:focus,
+.contact textarea:focus {
+    border-color: #06b6d4;
+    box-shadow: 0 0 20px rgba(6, 182, 212, 0.3);
+}
+
+.contact input::placeholder,
+.contact textarea::placeholder {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.contact textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+.contact button {
+    padding: 1.2rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    background: linear-gradient(45deg, #3b82f6, #06b6d4);
+    color: white;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 25px rgba(59, 130, 246, 0.4);
+    position: relative;
+    overflow: hidden;
+}
+
+.contact button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s;
+}
+
+.contact button:hover::before {
+    left: 100%;
+}
+
+.contact button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 35px rgba(59, 130, 246, 0.6);
+}
+
+footer {
+    margin-top: 2rem;
+    padding: 3rem 2rem;
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    background: rgba(15, 15, 35, 0.9);
+    backdrop-filter: blur(20px);
+    border-top: 1px solid rgba(59, 130, 246, 0.2);
+}
+
+footer a {
+    text-decoration: none;
+    color: white;
+    font-size: 1.2rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    padding: 12px 24px;
+    border-radius: 25px;
+    background: linear-gradient(45deg, #3b82f6, #06b6d4);
+    position: relative;
+    overflow: hidden;
+}
+
+footer a::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s;
+}
+
+footer a:hover::before {
+    left: 100%;
+}
+
+footer a:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(59, 130, 246, 0.5);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
     header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1rem 2rem;
-      background: white;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+        flex-direction: column;
+        gap: 1rem;
+        padding: 1rem;
     }
 
     nav a {
-      margin-left: 1rem;
-      text-decoration: none;
-      color: #0f172a;
-      font-weight: 500;
-      transition: color 0.3s;
-    }
-
-    nav a:hover {
-      color: #3b82f6;
-    }
-
-    nav a.active {
-      border-bottom: 2px solid #3b82f6;
+        margin: 0 0.5rem;
+        font-size: 0.9rem;
     }
 
     .hero {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-      padding: 4rem 2rem;
-      gap: 2rem;
-      animation: fadeIn 2s ease;
-    }
-
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+        padding: 2rem 1rem;
     }
 
     .hero-text h1 {
-      font-size: 2.5rem;
-    }
-
-    .hero-text h1 span {
-      color: #3b82f6;
-    }
-
-    .hero-text button {
-      margin-top: 1.5rem;
-      padding: 0.5rem 1rem;
-      font-size: 1rem;
-      color: white;
-      background-color: #3b82f6;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-      transition: background-color 0.3s;
-    }
-
-    .hero-text button:hover {
-      background-color: #2563eb;
-    }
-
-    .hero-img {
-      display: flex;
-      justify-content: center;
-      animation: popIn 1.5s ease;
-    }
-
-    @keyframes popIn {
-      from {
-        opacity: 0;
-        transform: scale(0.8);
-      }
-
-      to {
-        opacity: 1;
-        transform: scale(1);
-      }
-    }
-
-    .profile-container {
-      width: 200px;
-      height: 200px;
-      border-radius: 50%;
-      overflow: hidden;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
-      border: 4px solid #ffffff;
-      background-color: #ffffff;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      transition: transform 0.3s;
-    }
-
-    .profile-container:hover {
-      transform: scale(1.05);
-    }
-
-    .profile-container img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    h2 {
-      font-size: 2rem;
-      color: #3b82f6;
-      text-align: center;
-      margin-top: 3rem;
+        font-size: 1.8rem;
     }
 
     .cards-container {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 2rem;
-      margin: 2rem auto;
-      max-width: 1000px;
-      padding: 0 1rem;
+        grid-template-columns: 1fr;
+        padding: 0 1rem;
     }
 
-    .card {
-      background-color: #f8fafc;
-      border-radius: 1rem;
-      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
-      padding: 1.5rem;
-      transition: transform 0.3s, box-shadow 0.3s;
-      text-align: left;
-    }
-
-    .card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 12px 30px rgba(59, 130, 246, 0.15);
-    }
-
-    .card h3 {
-      color: #3b82f6;
-      margin-bottom: 0.5rem;
-      font-size: 1.2rem;
-    }
-
-    .card p {
-      font-size: 1rem;
-      color: #0f172a;
+    .skills .cards-container {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
     }
 
     .contact {
-      background-color: #ffffff;
-      padding: 3rem 2rem;
-      text-align: center;
-    }
-
-    .contact h2 {
-      margin-bottom: 2rem;
-    }
-
-    .contact form {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-      max-width: 500px;
-      margin: 0 auto;
-    }
-
-    .contact input,
-    .contact textarea {
-      padding: 1rem;
-      font-size: 1rem;
-      border: 1px solid #cbd5e1;
-      border-radius: 8px;
-      outline: none;
-    }
-
-    .contact textarea {
-      resize: vertical;
-    }
-
-    .contact button {
-      padding: 0.75rem;
-      font-size: 1rem;
-      background-color: #3b82f6;
-      color: white;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      transition: background-color 0.3s;
-    }
-
-    .contact button:hover {
-      background-color: #2563eb;
+        margin: 2rem 1rem;
+        padding: 2rem 1rem;
     }
 
     footer {
-      margin-top: 3rem;
-      padding: 1rem 2rem;
-      display: flex;
-      justify-content: center;
-      gap: 1.5rem;
-      background-color: #e0e7ff;
+        flex-direction: column;
+        gap: 1rem;
     }
+}
+.projects {
+  padding: 4rem 2rem;
+  background: linear-gradient(135deg, rgba(15, 15, 35, 0.6), rgba(15, 52, 96, 0.6));
+  text-align: center;
+}
 
-    footer a {
-      text-decoration: none;
-      color: #0f172a;
-      font-size: 1.2rem;
-      transition: color 0.3s;
-    }
+.projects h2 {
+  font-size: 2.5rem;
+  margin-bottom: 3rem;
+  background: linear-gradient(45deg, #06b6d4, #8b5cf6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
 
-    footer a:hover {
-      color: #3b82f6;
-    }
-  </style>
+.project-cards {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.project-card {
+  background: rgba(15, 15, 35, 0.6);
+  backdrop-filter: blur(15px);
+  border: 1px solid rgba(59, 130, 246, 0.2);
+  padding: 2rem;
+  border-radius: 20px;
+  width: 300px;
+  box-shadow: 0 8px 30px rgba(59, 130, 246, 0.2);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  position: relative;
+  overflow: hidden;
+  animation: fadeUpProject 1s ease forwards;
+  opacity: 0;
+}
+
+.project-card:hover {
+  transform: translateY(-15px) scale(1.03);
+  box-shadow: 0 20px 50px rgba(6, 182, 212, 0.4);
+  border-color: rgba(6, 182, 212, 0.5);
+}
+
+.project-card h3 {
+  color: #8b5cf6;
+  margin-bottom: 1rem;
+}
+
+.project-card p {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+@keyframes fadeUpProject {
+  0% {
+    transform: translateY(30px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0px);
+    opacity: 1;
+  }
+}
+
+/* Animation delay for each card */
+.project-card:nth-child(1) { animation-delay: 0.2s; }
+.project-card:nth-child(2) { animation-delay: 0.4s; }
+.project-card:nth-child(3) { animation-delay: 0.6s; }
+ 
+.project-card img {
+  width: 10rem;
+
+}
+ </style>
 </head>
 
 <body>
@@ -264,23 +759,23 @@
     </div>
     <div class="hero-text">
       <h1>Hi, <br> I'm <span>Ismail Cherraki</span><br> Full Stack Developer</h1>
-      <button>Contact Me</button>
+      <button onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'});">Contact Me</button>
     </div>
   </section>
   <section class="about" id="about">
     <h2>About Me</h2>
     <div class="cards-container">
       <div class="card">
-        <h3>👨‍💻 Full Stack Developer</h3>
+        <h3>👨‍💻 Front-End Developer</h3>
         <p>I am a creative and enthusiastic front-end developer with a strong passion for building modern, responsive
           websites. My goal is to create smooth user experiences and visually engaging designs. I enjoy turning designs
-          into functional code using HTML and CSS, and I’m expanding my skills in JavaScript to bring more interactivity
+          into functional code using HTML and CSS, and I'm expanding my skills in JavaScript to bring more interactivity
           to my projects.</p>
       </div>
       <div class="card">
         <h3>🌱 Learning Journey</h3>
-        <p>I’ve already mastered the core of HTML and CSS and I’m diving deeper into JavaScript. I’m currently enrolled
-          in a hands-on web development program where I’m developing small and medium-scale projects, learning best
+        <p>I've already mastered the core of HTML and CSS and I'm diving deeper into JavaScript. I'm currently enrolled
+          in a hands-on web development program where I'm developing small and medium-scale projects, learning best
           practices, and collaborating with peers. Every day I code, I improve.</p>
       </div>
       <div class="card">
@@ -292,25 +787,93 @@
     </div>
   </section>
   <section class="skills" id="skills">
+    
     <h2>Skills</h2>
     <div class="cards-container">
-      <div class="card">
-        <h3>💻 HTML</h3>
-        <p>I have a solid understanding of HTML5. I can structure pages with semantic elements and optimize them for
-          clarity, accessibility, and responsive layouts.</p>
+      <!-- React -->
+      <div class="card special">
+        <div class="wave-effect"></div>
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React Logo" />
+        <p>React</p>
       </div>
+
+      <!-- Node.js -->
       <div class="card">
-        <h3>🎨 CSS</h3>
-        <p>I’m experienced with CSS3 features like Flexbox, Grid, animations, and media queries to design beautiful,
-          responsive websites. I love playing with styles and layouts to create clean UIs.</p>
+        <div class="wave-effect"></div>
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" alt="Node.js Logo" />
+        <p>Node.js</p>
       </div>
+
+      <!-- MongoDB -->
+      <div class="card special">
+        <div class="wave-effect"></div>
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg" alt="MongoDB Logo" />
+        <p>MongoDB</p>
+      </div>
+
+      <!-- Express -->
       <div class="card">
-        <h3>📚 JavaScript (In Progress)</h3>
-        <p>I’m actively learning JavaScript to enhance my websites with dynamic behaviors and interactivity. I'm
-          focusing on mastering DOM manipulation, events, and basic logic for front-end functionality.</p>
+        <div class="wave-effect"></div>
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg" alt="Express Logo" style="background: rgba(255,255,255,0.9); padding: 8px; border-radius: 8px;" />
+        <p>Express</p>
+      </div>
+
+      <!-- JavaScript -->
+      <div class="card special">
+        <div class="wave-effect"></div>
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript Logo" />
+        <p>JavaScript</p>
+      </div>
+
+      <!-- Git -->
+      <div class="card">
+        <div class="wave-effect"></div>
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Git Logo" />
+        <p>Git</p>
+      </div>
+
+      <!-- HTML -->
+      <div class="card special">
+        <div class="wave-effect"></div>
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML Logo" />
+        <p>HTML</p>
+      </div>
+
+      <!-- CSS -->
+      <div class="card">
+        <div class="wave-effect"></div>
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS Logo" />
+        <p>CSS</p>
       </div>
     </div>
   </section>
+  <section class="projects">
+  <h2>My Projects</h2>
+  <div class="project-cards">
+
+    <div class="project-card">
+      <img src="https://cdn-images-1.medium.com/max/400/1*EPG6JwBIKVVTE4IGD2XoYA@2x.png" alt="DocPlanner Clone" />
+      <h3>DocPlanner Clone</h3>
+      <p>Responsive website inspired by DocPlanner, built using HTML and CSS.</p>
+    </div>
+
+    <div class="project-card">
+      <img src="https://brandlogos.net/wp-content/uploads/2022/06/glovo-logo_brandlogos.net_cij8g.png" alt="Portfolio V2" />
+      <h3>Glovo Clone</h3>
+      <p>My second personal portfolio, animated and dark-themed, with gradient effects.</p>
+    </div>
+
+    <div class="project-card">
+      <img src="https://www.nextiva.com/blog/wp-content/uploads/sites/10/2024/03/call-center-dashboard-examples.webp" alt="Call Center Dashboard" />
+      <h3>Call Center Dashboard</h3>
+      <p>Custom dashboard for managing call center agents, using HTML/CSS and a bit of JS.</p>
+    </div>
+
+  </div>
+</section>
+
+
+
   <section class="contact" id="contact">
     <h2>Contact Me</h2>
     <form>
@@ -321,10 +884,8 @@
     </form>
   </section>
   <footer>
-    <a href="https://www.linkedin.com" target="_blank">LinkedIn</a>
-    <a href="#">Behance</a>
-    <a href="#">GitHub</a>
+    <a href="https://www.linkedin.com/in/ismail-cherraki-438213307/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+    <a href="https://github.com/cherraki20" target="_blank" rel="noopener noreferrer">GitHub</a>
   </footer>
-</body>
 
-</html>
+ 
